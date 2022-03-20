@@ -1,0 +1,103 @@
+state1,state2,party,manu,case_manu
+Alabama,AL,REPUBLICAN,pfizer,49 
+Alaska,AK,REPUBLICAN,pfizer,12 
+Arizona,AZ,DEMOCRAT,pfizer,106 
+Arkansas,AR,REPUBLICAN,pfizer,36 
+California,CA,DEMOCRAT,pfizer,385 
+Colorado,CO,DEMOCRAT,pfizer,58 
+Connecticut,CT,DEMOCRAT,pfizer,69 
+Delaware,DE,DEMOCRAT,pfizer,15 
+District of Columbia,DC,DEMOCRAT,pfizer,5 
+Florida,FL,REPUBLICAN,pfizer,323 
+Georgia,GA,DEMOCRAT,pfizer,107 
+Hawaii,HI,DEMOCRAT,pfizer,17 
+Idaho,ID,REPUBLICAN,pfizer,10 
+Illinois,IL,DEMOCRAT,pfizer,149 
+Indiana,IN,REPUBLICAN,pfizer,82 
+Iowa,IA,REPUBLICAN,pfizer,7 
+Kansas,KS,REPUBLICAN,pfizer,31 
+Kentucky,KY,REPUBLICAN,pfizer,40 
+Louisiana,LA,REPUBLICAN,pfizer,61 
+Maine,ME,DEMOCRAT,pfizer,8 
+Maryland,MD,DEMOCRAT,pfizer,68 
+Massachusetts,MA,DEMOCRAT,pfizer,146 
+Michigan,MI,DEMOCRAT,pfizer,192 
+Minnesota,MN,DEMOCRAT,pfizer,86 
+Mississippi,MS,REPUBLICAN,pfizer,21 
+Missouri,MO,REPUBLICAN,pfizer,105 
+Montana,MT,REPUBLICAN,pfizer,17 
+Nebraska,NE,REPUBLICAN,pfizer,8 
+Nevada,NV,DEMOCRAT,pfizer,31 
+New Hampshire,NH,DEMOCRAT,pfizer,9 
+New Jersey,NJ,DEMOCRAT,pfizer,142 
+New Mexico,NM,DEMOCRAT,pfizer,40 
+New York,NY,DEMOCRAT,pfizer,272 
+North Carolina,NC,REPUBLICAN,pfizer,178 
+North Dakota,ND,REPUBLICAN,pfizer,4 
+Ohio,OH,REPUBLICAN,pfizer,98 
+Oklahoma,OK,REPUBLICAN,pfizer,55 
+Oregon,OR,DEMOCRAT,pfizer,36 
+Pennsylvania,PA,DEMOCRAT,pfizer,189 
+Rhode Island,RI,DEMOCRAT,pfizer,14 
+South Carolina,SC,REPUBLICAN,pfizer,59 
+South Dakota,SD,REPUBLICAN,pfizer,11 
+Tennessee,TN,REPUBLICAN,pfizer,109 
+Texas,TX,REPUBLICAN,pfizer,202 
+Utah,UT,REPUBLICAN,pfizer,15 
+Vermont,VT,DEMOCRAT,pfizer,7 
+Virginia,VA,DEMOCRAT,pfizer,106 
+Washington,WA,DEMOCRAT,pfizer,63 
+West Virginia,WV,REPUBLICAN,pfizer,19 
+Wisconsin,WI,DEMOCRAT,pfizer,83 
+Wyoming,WY,REPUBLICAN,pfizer,2 
+Alabama,AL,REPUBLICAN,moderna,16 
+Alaska,AK,REPUBLICAN,moderna,0 
+Arizona,AZ,DEMOCRAT,moderna,25 
+Arkansas,AR,REPUBLICAN,moderna,3 
+California,CA,DEMOCRAT,moderna,100 
+Colorado,CO,DEMOCRAT,moderna,15 
+Connecticut,CT,DEMOCRAT,moderna,19 
+Delaware,DE,DEMOCRAT,moderna,3 
+District of Columbia,DC,DEMOCRAT,moderna,1 
+Florida,FL,REPUBLICAN,moderna,89 
+Georgia,GA,DEMOCRAT,moderna,17 
+Hawaii,HI,DEMOCRAT,moderna,6 
+Idaho,ID,REPUBLICAN,moderna,5 
+Illinois,IL,DEMOCRAT,moderna,39 
+Indiana,IN,REPUBLICAN,moderna,14 
+Iowa,IA,REPUBLICAN,moderna,14 
+Kansas,KS,REPUBLICAN,moderna,0 
+Kentucky,KY,REPUBLICAN,moderna,12 
+Louisiana,LA,REPUBLICAN,moderna,5 
+Maine,ME,DEMOCRAT,moderna,4 
+Maryland,MD,DEMOCRAT,moderna,16 
+Massachusetts,MA,DEMOCRAT,moderna,35 
+Michigan,MI,DEMOCRAT,moderna,18 
+Minnesota,MN,DEMOCRAT,moderna,13 
+Mississippi,MS,REPUBLICAN,moderna,6 
+Missouri,MO,REPUBLICAN,moderna,4 
+Montana,MT,REPUBLICAN,moderna,2 
+Nebraska,NE,REPUBLICAN,moderna,10 
+Nevada,NV,DEMOCRAT,moderna,10 
+New Hampshire,NH,DEMOCRAT,moderna,4 
+New Jersey,NJ,DEMOCRAT,moderna,46 
+New Mexico,NM,DEMOCRAT,moderna,11 
+New York,NY,DEMOCRAT,moderna,64 
+North Carolina,NC,REPUBLICAN,moderna,33 
+North Dakota,ND,REPUBLICAN,moderna,2 
+Ohio,OH,REPUBLICAN,moderna,38 
+Oklahoma,OK,REPUBLICAN,moderna,10 
+Oregon,OR,DEMOCRAT,moderna,10 
+Pennsylvania,PA,DEMOCRAT,moderna,32 
+Rhode Island,RI,DEMOCRAT,moderna,3 
+South Carolina,SC,REPUBLICAN,moderna,8 
+South Dakota,SD,REPUBLICAN,moderna,3 
+Tennessee,TN,REPUBLICAN,moderna,12 
+Texas,TX,REPUBLICAN,moderna,65 
+Utah,UT,REPUBLICAN,moderna,1 
+Vermont,VT,DEMOCRAT,moderna,1 
+Virginia,VA,DEMOCRAT,moderna,20 
+Washington,WA,DEMOCRAT,moderna,20 
+West Virginia,WV,REPUBLICAN,moderna,5 
+Wisconsin,WI,DEMOCRAT,moderna,21 
+Wyoming,WY,REPUBLICAN,moderna,1 

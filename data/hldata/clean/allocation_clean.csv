@@ -1,0 +1,103 @@
+state1,state2,party,manufacturer,allocation
+Alabama,AL,REPUBLICAN,pfizer,829140 
+Alaska,AK,REPUBLICAN,pfizer,234780 
+Arizona,AZ,DEMOCRAT,pfizer,1175460 
+Arkansas,AR,REPUBLICAN,pfizer,507000 
+California,CA,DEMOCRAT,pfizer,6576960 
+Colorado,CO,DEMOCRAT,pfizer,942825 
+Connecticut,CT,DEMOCRAT,pfizer,629850 
+Delaware,DE,DEMOCRAT,pfizer,174720 
+District of Columbia,DC,DEMOCRAT,pfizer,133575 
+Florida,FL,REPUBLICAN,pfizer,3598920 
+Georgia,GA,DEMOCRAT,pfizer,1713270 
+Hawaii,HI,DEMOCRAT,pfizer,253890 
+Idaho,ID,REPUBLICAN,pfizer,281190 
+Illinois,IL,DEMOCRAT,pfizer,1715220 
+Indiana,IN,REPUBLICAN,pfizer,1115595 
+Iowa,IA,REPUBLICAN,pfizer,532155 
+Kansas,KS,REPUBLICAN,pfizer,490620 
+Kentucky,KY,REPUBLICAN,pfizer,762255 
+Louisiana,LA,REPUBLICAN,pfizer,789360 
+Maine,ME,DEMOCRAT,pfizer,243360 
+Maryland,MD,DEMOCRAT,pfizer,1027650 
+Massachusetts,MA,DEMOCRAT,pfizer,1199250 
+Michigan,MI,DEMOCRAT,pfizer,1702350 
+Minnesota,MN,DEMOCRAT,pfizer,935415 
+Mississippi,MS,REPUBLICAN,pfizer,501930 
+Missouri,MO,REPUBLICAN,pfizer,1038570 
+Montana,MT,REPUBLICAN,pfizer,187785 
+Nebraska,NE,REPUBLICAN,pfizer,324870 
+Nevada,NV,DEMOCRAT,pfizer,500760 
+New Hampshire,NH,DEMOCRAT,pfizer,243360 
+New Jersey,NJ,DEMOCRAT,pfizer,1517880 
+New Mexico,NM,DEMOCRAT,pfizer,362700 
+New York,NY,DEMOCRAT,pfizer,1927965 
+North Carolina,NC,REPUBLICAN,pfizer,1728480 
+North Dakota,ND,REPUBLICAN,pfizer,134745 
+Ohio,OH,REPUBLICAN,pfizer,1982565 
+Oklahoma,OK,REPUBLICAN,pfizer,659295 
+Oregon,OR,DEMOCRAT,pfizer,716040 
+Pennsylvania,PA,DEMOCRAT,pfizer,1949025 
+Rhode Island,RI,DEMOCRAT,pfizer,191295 
+South Carolina,SC,REPUBLICAN,pfizer,851565 
+South Dakota,SD,REPUBLICAN,pfizer,152685 
+Tennessee,TN,REPUBLICAN,pfizer,1135095 
+Texas,TX,REPUBLICAN,pfizer,4506255 
+Utah,UT,REPUBLICAN,pfizer,474825 
+Vermont,VT,DEMOCRAT,pfizer,122265 
+Virginia,VA,DEMOCRAT,pfizer,1437345 
+Washington,WA,DEMOCRAT,pfizer,1274715 
+West Virginia,WV,REPUBLICAN,pfizer,324870 
+Wisconsin,WI,DEMOCRAT,pfizer,997230 
+Wyoming,WY,REPUBLICAN,pfizer,105300 
+Alabama,AL,REPUBLICAN,moderna,750700 
+Alaska,AK,REPUBLICAN,moderna,186500 
+Arizona,AZ,DEMOCRAT,moderna,1064000 
+Arkansas,AR,REPUBLICAN,moderna,455300 
+California,CA,DEMOCRAT,moderna,5987400 
+Colorado,CO,DEMOCRAT,moderna,851400 
+Connecticut,CT,DEMOCRAT,moderna,563700 
+Delaware,DE,DEMOCRAT,moderna,149400 
+District of Columbia,DC,DEMOCRAT,moderna,113100 
+Florida,FL,REPUBLICAN,moderna,3275100 
+Georgia,GA,DEMOCRAT,moderna,1552400 
+Hawaii,HI,DEMOCRAT,moderna,223300 
+Idaho,ID,REPUBLICAN,moderna,249400 
+Illinois,IL,DEMOCRAT,moderna,1553900 
+Indiana,IN,REPUBLICAN,moderna,1009000 
+Iowa,IA,REPUBLICAN,moderna,478900 
+Kansas,KS,REPUBLICAN,moderna,437400 
+Kentucky,KY,REPUBLICAN,moderna,683200 
+Louisiana,LA,REPUBLICAN,moderna,708400 
+Maine,ME,DEMOCRAT,moderna,215700 
+Maryland,MD,DEMOCRAT,moderna,928500 
+Massachusetts,MA,DEMOCRAT,moderna,1086100 
+Michigan,MI,DEMOCRAT,moderna,1546000 
+Minnesota,MN,DEMOCRAT,moderna,846600 
+Mississippi,MS,REPUBLICAN,moderna,452300 
+Missouri,MO,REPUBLICAN,moderna,937100 
+Montana,MT,REPUBLICAN,moderna,163600 
+Nebraska,NE,REPUBLICAN,moderna,289300 
+Nevada,NV,DEMOCRAT,moderna,448600 
+New Hampshire,NH,DEMOCRAT,moderna,215800 
+New Jersey,NJ,DEMOCRAT,moderna,1376000 
+New Mexico,NM,DEMOCRAT,moderna,322600 
+New York,NY,DEMOCRAT,moderna,1752200 
+North Carolina,NC,REPUBLICAN,moderna,1566100 
+North Dakota,ND,REPUBLICAN,moderna,118000 
+Ohio,OH,REPUBLICAN,moderna,1796700 
+Oklahoma,OK,REPUBLICAN,moderna,590300 
+Oregon,OR,DEMOCRAT,moderna,642700 
+Pennsylvania,PA,DEMOCRAT,moderna,1769800 
+Rhode Island,RI,DEMOCRAT,moderna,169900 
+South Carolina,SC,REPUBLICAN,moderna,768900 
+South Dakota,SD,REPUBLICAN,moderna,130700 
+Tennessee,TN,REPUBLICAN,moderna,1026200 
+Texas,TX,REPUBLICAN,moderna,4099900 
+Utah,UT,REPUBLICAN,moderna,426600 
+Vermont,VT,DEMOCRAT,moderna,102100 
+Virginia,VA,DEMOCRAT,moderna,1303500 
+Washington,WA,DEMOCRAT,moderna,1140200 
+West Virginia,WV,REPUBLICAN,moderna,291000 
+Wisconsin,WI,DEMOCRAT,moderna,899200 
+Wyoming,WY,REPUBLICAN,moderna,89700 

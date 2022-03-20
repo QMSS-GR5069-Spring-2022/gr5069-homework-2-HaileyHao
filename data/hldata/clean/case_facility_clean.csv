@@ -1,0 +1,197 @@
+"","state1","state2","party","facility","cases"
+"1","Alabama","AL","REPUBLICAN","MIL",1
+"2","Alabama","AL","REPUBLICAN","OTH",22
+"3","Alabama","AL","REPUBLICAN","PUB",27
+"4","Alabama","AL","REPUBLICAN","PVT",135
+"5","Alaska","AK","REPUBLICAN","MIL",7
+"6","Alaska","AK","REPUBLICAN","OTH",26
+"7","Alaska","AK","REPUBLICAN","PUB",13
+"8","Alaska","AK","REPUBLICAN","PVT",59
+"9","Arizona","AZ","DEMOCRAT","MIL",7
+"10","Arizona","AZ","DEMOCRAT","OTH",94
+"11","Arizona","AZ","DEMOCRAT","PUB",67
+"12","Arizona","AZ","DEMOCRAT","PVT",202
+"13","Arkansas","AR","REPUBLICAN","MIL",1
+"14","Arkansas","AR","REPUBLICAN","OTH",17
+"15","Arkansas","AR","REPUBLICAN","PUB",14
+"16","Arkansas","AR","REPUBLICAN","PVT",77
+"17","California","CA","DEMOCRAT","MIL",33
+"18","California","CA","DEMOCRAT","OTH",296
+"19","California","CA","DEMOCRAT","PUB",172
+"20","California","CA","DEMOCRAT","PVT",1016
+"21","Colorado","CO","DEMOCRAT","MIL",12
+"22","Colorado","CO","DEMOCRAT","OTH",57
+"23","Colorado","CO","DEMOCRAT","PUB",44
+"24","Colorado","CO","DEMOCRAT","PVT",311
+"25","Connecticut","CT","DEMOCRAT","MIL",6
+"26","Connecticut","CT","DEMOCRAT","OTH",26
+"27","Connecticut","CT","DEMOCRAT","PUB",62
+"28","Connecticut","CT","DEMOCRAT","PVT",213
+"29","Delaware","DE","DEMOCRAT","MIL",3
+"30","Delaware","DE","DEMOCRAT","OTH",11
+"31","Delaware","DE","DEMOCRAT","PUB",2
+"32","Delaware","DE","DEMOCRAT","PVT",12
+"33","District of Columbia","DC","DEMOCRAT","MIL",3
+"34","District of Columbia","DC","DEMOCRAT","OTH",10
+"35","District of Columbia","DC","DEMOCRAT","PUB",2
+"36","District of Columbia","DC","DEMOCRAT","PVT",16
+"37","Florida","FL","REPUBLICAN","MIL",19
+"38","Florida","FL","REPUBLICAN","OTH",215
+"39","Florida","FL","REPUBLICAN","PUB",134
+"40","Florida","FL","REPUBLICAN","PVT",540
+"41","Georgia","GA","DEMOCRAT","MIL",13
+"42","Georgia","GA","DEMOCRAT","OTH",50
+"43","Georgia","GA","DEMOCRAT","PUB",98
+"44","Georgia","GA","DEMOCRAT","PVT",226
+"45","Hawaii","HI","DEMOCRAT","MIL",18
+"46","Hawaii","HI","DEMOCRAT","OTH",12
+"47","Hawaii","HI","DEMOCRAT","PUB",12
+"48","Hawaii","HI","DEMOCRAT","PVT",56
+"49","Idaho","ID","REPUBLICAN","MIL",1
+"50","Idaho","ID","REPUBLICAN","OTH",8
+"51","Idaho","ID","REPUBLICAN","PUB",11
+"52","Idaho","ID","REPUBLICAN","PVT",93
+"53","Illinois","IL","DEMOCRAT","MIL",9
+"54","Illinois","IL","DEMOCRAT","OTH",127
+"55","Illinois","IL","DEMOCRAT","PUB",107
+"56","Illinois","IL","DEMOCRAT","PVT",487
+"57","Indiana","IN","REPUBLICAN","MIL",5
+"58","Indiana","IN","REPUBLICAN","OTH",179
+"59","Indiana","IN","REPUBLICAN","PUB",88
+"60","Indiana","IN","REPUBLICAN","PVT",561
+"61","Iowa","IA","REPUBLICAN","MIL",2
+"62","Iowa","IA","REPUBLICAN","OTH",12
+"63","Iowa","IA","REPUBLICAN","PUB",47
+"64","Iowa","IA","REPUBLICAN","PVT",123
+"65","Kansas","KS","REPUBLICAN","MIL",3
+"66","Kansas","KS","REPUBLICAN","OTH",29
+"67","Kansas","KS","REPUBLICAN","PUB",45
+"68","Kansas","KS","REPUBLICAN","PVT",127
+"69","Kentucky","KY","REPUBLICAN","MIL",2
+"70","Kentucky","KY","REPUBLICAN","OTH",31
+"71","Kentucky","KY","REPUBLICAN","PUB",67
+"72","Kentucky","KY","REPUBLICAN","PVT",203
+"73","Louisiana","LA","REPUBLICAN","MIL",3
+"74","Louisiana","LA","REPUBLICAN","OTH",47
+"75","Louisiana","LA","REPUBLICAN","PUB",9
+"76","Louisiana","LA","REPUBLICAN","PVT",133
+"77","Maine","ME","DEMOCRAT","OTH",26
+"78","Maine","ME","DEMOCRAT","PUB",7
+"79","Maine","ME","DEMOCRAT","PVT",123
+"80","Maryland","MD","DEMOCRAT","MIL",25
+"81","Maryland","MD","DEMOCRAT","OTH",79
+"82","Maryland","MD","DEMOCRAT","PUB",73
+"83","Maryland","MD","DEMOCRAT","PVT",292
+"84","Massachusetts","MA","DEMOCRAT","MIL",5
+"85","Massachusetts","MA","DEMOCRAT","OTH",67
+"86","Massachusetts","MA","DEMOCRAT","PUB",41
+"87","Massachusetts","MA","DEMOCRAT","PVT",288
+"88","Michigan","MI","DEMOCRAT","MIL",5
+"89","Michigan","MI","DEMOCRAT","OTH",66
+"90","Michigan","MI","DEMOCRAT","PUB",98
+"91","Michigan","MI","DEMOCRAT","PVT",347
+"92","Minnesota","MN","DEMOCRAT","MIL",6
+"93","Minnesota","MN","DEMOCRAT","OTH",64
+"94","Minnesota","MN","DEMOCRAT","PUB",48
+"95","Minnesota","MN","DEMOCRAT","PVT",226
+"96","Mississippi","MS","REPUBLICAN","MIL",6
+"97","Mississippi","MS","REPUBLICAN","OTH",19
+"98","Mississippi","MS","REPUBLICAN","PUB",21
+"99","Mississippi","MS","REPUBLICAN","PVT",56
+"100","Missouri","MO","REPUBLICAN","MIL",3
+"101","Missouri","MO","REPUBLICAN","OTH",27
+"102","Missouri","MO","REPUBLICAN","PUB",41
+"103","Missouri","MO","REPUBLICAN","PVT",280
+"104","Montana","MT","REPUBLICAN","MIL",5
+"105","Montana","MT","REPUBLICAN","OTH",12
+"106","Montana","MT","REPUBLICAN","PUB",27
+"107","Montana","MT","REPUBLICAN","PVT",179
+"108","Nebraska","NE","REPUBLICAN","MIL",1
+"109","Nebraska","NE","REPUBLICAN","OTH",23
+"110","Nebraska","NE","REPUBLICAN","PUB",24
+"111","Nebraska","NE","REPUBLICAN","PVT",86
+"112","Nevada","NV","DEMOCRAT","MIL",4
+"113","Nevada","NV","DEMOCRAT","OTH",18
+"114","Nevada","NV","DEMOCRAT","PUB",25
+"115","Nevada","NV","DEMOCRAT","PVT",76
+"116","New Hampshire","NH","DEMOCRAT","MIL",4
+"117","New Hampshire","NH","DEMOCRAT","OTH",36
+"118","New Hampshire","NH","DEMOCRAT","PUB",15
+"119","New Hampshire","NH","DEMOCRAT","PVT",72
+"120","New Jersey","NJ","DEMOCRAT","MIL",4
+"121","New Jersey","NJ","DEMOCRAT","OTH",65
+"122","New Jersey","NJ","DEMOCRAT","PUB",56
+"123","New Jersey","NJ","DEMOCRAT","PVT",352
+"124","New Mexico","NM","DEMOCRAT","MIL",3
+"125","New Mexico","NM","DEMOCRAT","OTH",26
+"126","New Mexico","NM","DEMOCRAT","PUB",22
+"127","New Mexico","NM","DEMOCRAT","PVT",88
+"128","New York","NY","DEMOCRAT","MIL",6
+"129","New York","NY","DEMOCRAT","OTH",191
+"130","New York","NY","DEMOCRAT","PUB",96
+"131","New York","NY","DEMOCRAT","PVT",800
+"132","North Carolina","NC","REPUBLICAN","MIL",34
+"133","North Carolina","NC","REPUBLICAN","OTH",56
+"134","North Carolina","NC","REPUBLICAN","PUB",109
+"135","North Carolina","NC","REPUBLICAN","PVT",220
+"136","North Dakota","ND","REPUBLICAN","OTH",5
+"137","North Dakota","ND","REPUBLICAN","PUB",19
+"138","North Dakota","ND","REPUBLICAN","PVT",45
+"139","Ohio","OH","REPUBLICAN","MIL",6
+"140","Ohio","OH","REPUBLICAN","OTH",80
+"141","Ohio","OH","REPUBLICAN","PUB",144
+"142","Ohio","OH","REPUBLICAN","PVT",385
+"143","Oklahoma","OK","REPUBLICAN","MIL",5
+"144","Oklahoma","OK","REPUBLICAN","OTH",50
+"145","Oklahoma","OK","REPUBLICAN","PUB",53
+"146","Oklahoma","OK","REPUBLICAN","PVT",122
+"147","Oregon","OR","DEMOCRAT","OTH",34
+"148","Oregon","OR","DEMOCRAT","PUB",25
+"149","Oregon","OR","DEMOCRAT","PVT",197
+"150","Pennsylvania","PA","DEMOCRAT","MIL",7
+"151","Pennsylvania","PA","DEMOCRAT","OTH",57
+"152","Pennsylvania","PA","DEMOCRAT","PUB",50
+"153","Pennsylvania","PA","DEMOCRAT","PVT",496
+"154","Rhode Island","RI","DEMOCRAT","MIL",1
+"155","Rhode Island","RI","DEMOCRAT","OTH",7
+"156","Rhode Island","RI","DEMOCRAT","PUB",5
+"157","Rhode Island","RI","DEMOCRAT","PVT",38
+"158","South Carolina","SC","REPUBLICAN","MIL",7
+"159","South Carolina","SC","REPUBLICAN","OTH",19
+"160","South Carolina","SC","REPUBLICAN","PUB",7
+"161","South Carolina","SC","REPUBLICAN","PVT",108
+"162","South Dakota","SD","REPUBLICAN","OTH",8
+"163","South Dakota","SD","REPUBLICAN","PUB",3
+"164","South Dakota","SD","REPUBLICAN","PVT",68
+"165","Tennessee","TN","REPUBLICAN","MIL",1
+"166","Tennessee","TN","REPUBLICAN","OTH",46
+"167","Tennessee","TN","REPUBLICAN","PUB",139
+"168","Tennessee","TN","REPUBLICAN","PVT",142
+"169","Texas","TX","REPUBLICAN","MIL",32
+"170","Texas","TX","REPUBLICAN","OTH",179
+"171","Texas","TX","REPUBLICAN","PUB",167
+"172","Texas","TX","REPUBLICAN","PVT",747
+"173","Utah","UT","REPUBLICAN","OTH",18
+"174","Utah","UT","REPUBLICAN","PUB",59
+"175","Utah","UT","REPUBLICAN","PVT",72
+"176","Vermont","VT","DEMOCRAT","OTH",2
+"177","Vermont","VT","DEMOCRAT","PUB",4
+"178","Vermont","VT","DEMOCRAT","PVT",72
+"179","Virginia","VA","DEMOCRAT","MIL",24
+"180","Virginia","VA","DEMOCRAT","OTH",70
+"181","Virginia","VA","DEMOCRAT","PUB",76
+"182","Virginia","VA","DEMOCRAT","PVT",319
+"183","Washington","WA","DEMOCRAT","MIL",18
+"184","Washington","WA","DEMOCRAT","OTH",66
+"185","Washington","WA","DEMOCRAT","PUB",27
+"186","Washington","WA","DEMOCRAT","PVT",298
+"187","West Virginia","WV","REPUBLICAN","OTH",18
+"188","West Virginia","WV","REPUBLICAN","PUB",65
+"189","West Virginia","WV","REPUBLICAN","PVT",58
+"190","Wisconsin","WI","DEMOCRAT","MIL",5
+"191","Wisconsin","WI","DEMOCRAT","OTH",37
+"192","Wisconsin","WI","DEMOCRAT","PUB",30
+"193","Wisconsin","WI","DEMOCRAT","PVT",357
+"194","Wyoming","WY","REPUBLICAN","OTH",8
+"195","Wyoming","WY","REPUBLICAN","PUB",20
+"196","Wyoming","WY","REPUBLICAN","PVT",17
