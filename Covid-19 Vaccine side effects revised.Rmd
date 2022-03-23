@@ -102,6 +102,7 @@ tt_source <- DataframeSource(tt)
 tt_corpus <- VCorpus(tt_source)
 tt_corpus
 
+summary(tt_corpus)
 
 library(stopwords)
 #delete stop words to allow more precise analysis for the texts on tweets.
@@ -129,6 +130,8 @@ tt_tidy <- tt_tidy %>%
   group_by(term) %>% 
   mutate(n=n()) %>% 
   arrange(desc(n))
+
+summary(tt_tidy)
 
 tt_tidy$term2 <- hunspell::hunspell_stem(tt_tidy$term,"en_US")
 ttt <- tt_tidy
