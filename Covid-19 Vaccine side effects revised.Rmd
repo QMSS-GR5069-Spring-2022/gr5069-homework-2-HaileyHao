@@ -44,6 +44,7 @@ https://ourworldindata.org/us-states-vaccinations
 
 ## What Do People Tweet about Covid-19 Vaccines ? 
 
+
 ```{r include=FALSE}
 library(tidyverse)
 library(tm)
@@ -69,6 +70,7 @@ library(ggrepel)
 library(networkD3)
 library(gridExtra)
 # library(RColorBrewer)
+## loading packages
 
 tweet <- fread("./data/vaccination_all_tweets_ansi.csv")
 ```
@@ -76,6 +78,7 @@ tweet <- fread("./data/vaccination_all_tweets_ansi.csv")
 
 ```{r}
 load("./data/term_stemmed_all.RData")
+#whether the data is processed or what is inside the dataset can be described in the comments
 ```
 
 ```{r eval=FALSE, include=FALSE}
