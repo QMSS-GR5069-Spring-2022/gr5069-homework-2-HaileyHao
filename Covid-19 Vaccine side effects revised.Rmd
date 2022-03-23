@@ -345,6 +345,7 @@ num<-twi%>%
 
 
 ```{r echo=FALSE,,dpi= 300,out.width = '70%',out.height = '70%'}
+#plot the timeline of sentiments of tweets for Covid vaccines
 ggplot(num, aes(x = twi_date, y = n,colour= Sentiment)) +scale_x_date(breaks = "25 day")+ theme_minimal()+geom_line(size=1.2)+labs(x = "Date of Tweets", y = "Number of Tweets",
        title = "Timeline showing Sentiment of Tweets about COVID-19 Vaccines") + scale_color_manual(values=c("#106d9c", "yellow",  "#FF6666"))
 ```
