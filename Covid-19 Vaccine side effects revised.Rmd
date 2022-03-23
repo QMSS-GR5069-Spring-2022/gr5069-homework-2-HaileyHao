@@ -9,10 +9,17 @@ output:
     code_folding: hide
 ---
 
+############################
+# File Name: Covid-19 Vaccine Tweets and Side Effects Report
+# Date: March 22, 2022
+# Version: R 3.2
+# Input Files: "vaccination_all_tweets_ansi.csv"
+# Output Files: 
+# Purpose: 
+############################
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(knitr::opts_chunk$set(echo = TRUE,warning = FALSE, message=FALSE))
 ```
-
 
 # Overview  
 
