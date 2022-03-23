@@ -605,9 +605,9 @@ new_stops <- c("no", "history","medical", "conditions", "historyconcurrent", "di
 
 his$text <- iconv(his$text, "UTF-8", "UTF-8",sub='')
 his$text = removePunctuation(his$text)
-his$text=tolower(his$text)
-his$text=removeWords(his$text, new_stops)
-his$text=removeNumbers(his$text)
+his$text = tolower(his$text)
+his$text = removeWords(his$text, new_stops)
+his$text = removeNumbers(his$text)
   
 require(RWeka)
 # Make tokenizer function 
@@ -747,7 +747,7 @@ Negative, disgust, fear, sadness are the most frequently expressed emotions in t
 
 ## Allocation by state
 
-```{r echo=FALSE,dpi= 300,out.width = '70%',out.height = '70%'}
+```{r echo = FALSE,dpi= 300,out.width = '70%',out.height = '70%'}
 # This data set is originated from the allocation data set above, including the vaccine allocation of Pfizer and Moderna in 50 states and the District of Columbia before 2021-03-31.
 # The results of the state elections come from the data provided in the Week 5 lecture.
 # The data cleaning process is completed by Excel.
@@ -883,14 +883,14 @@ setView(lat = 37, lng = -95, zoom = 4) %>%
   
   
   addPolygons(group="Democrat",
-             data=subset(rate.sp, party == 'DEMOCRAT' ),
+             data = subset(rate.sp, party == 'DEMOCRAT' ),
              popup = rate.popup.content.d,
              opacity = 1.0, stroke = TRUE,
              color = "blue", weight=1) %>%
   
   
   addPolygons(group="Republican",
-             data=subset(rate.sp, party == 'REPUBLICAN' ),
+             data = subset(rate.sp, party == 'REPUBLICAN' ),
              popup = rate.popup.content.r,
              opacity = 1.0, stroke = TRUE,
              color = "red", weight=1) %>%
@@ -911,10 +911,10 @@ The reporting rate of vaccine side effects in each state does not seem to be sig
 case_manu <- read.csv('data/hldata/clean/case_manu_clean.csv')
 ```
 
-```{r echo=FALSE,dpi= 300,out.width = '70%',out.height = '70%'}
+```{r echo = FALSE,dpi= 300,out.width = '70%',out.height = '70%'}
 # bar
 
-p3<-ggplot(case_manu, aes(x = state1, y=case_manu, 
+p3 <- ggplot(case_manu, aes(x = state1, y=case_manu, 
                              col = manu , 
                              fill = manu )) + 
 geom_bar(stat = "identity", position = position_dodge())+
