@@ -1,0 +1,537 @@
+---
+title: " Covid-19 Vaccine Tweets and Side Effects Report"
+author: "Group L"
+output:
+  html_document:
+    toc: true
+    self_contained: true
+    keep_md: true
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(knitr::opts_chunk$set(echo = TRUE,warning = FALSE, message=FALSE))
+```
+
+
+# PART ⅠⅠ    
+<br/>     
+
+# Who Are the People Reporting Side Effects ?   
+<br/>    
+  
+## Age and Gender  
+
+### Do elders suffer more from side effects ? Not exactly  
+
+```{r, echo=FALSE,dpi= 300,out.width = '70%',out.height = '70%'}
+vac <- read_csv("data/hanyudata/2021VAERSDATA.csv")
+sym <- read_csv("data/hanyudata/2021VAERSSYMPTOMS.csv")
+vax <- read_csv("data/hanyudata/2021VAERSVAX.csv")
+
+#convert vaccination date
+vac$VAX_DATE <- as.Date(vac$VAX_DATE, format = "%m/%d/%Y") 
+
+#merge the first two csv file by patient ID
+merge1 <- left_join(vac, sym, by = "VAERS_ID")
+#merge the third csv together
+merge <- left_join(merge1, vax, by = "VAERS_ID")
+
+#filter for COVID19 vaccine
+covid <- merge %>% 
+  filter(VAX_TYPE == "COVID19")
+
+#find out patient's age and gender
+agesex <- covid %>% 
+  distinct(VAERS_ID,.keep_all = TRUE) %>% #distinct patients
+  select(AGE_YRS, SEX, VAX_DATE) %>% 
+  filter(AGE_YRS >= 18 & AGE_YRS != 'NA', VAX_DATE >= "2020-12-01" & SEX != "U" ) #filter for age over 18, vaccination data after 2020-12-01 and filter out unknown value for sex
+
+as <- agesex %>% 
+  group_by(SEX,AGE_YRS) %>% 
+  count(SEX,AGE_YRS)
+
+ggplot(as, aes(x = AGE_YRS, y = n, color = SEX))+
+  geom_line(size = 1)+ 
+  labs(title = "Covid Vaccine Side Effects Reported Based on Age and Sex<br> By Mar 31, 2021",x="Age",y = "Number of People Reported") + 
+  scale_x_continuous(breaks = seq(20,110,10), limits = c(15, 110)) + scale_y_continuous(breaks = seq(0,600,200), limits = c(0, 600))+
+  theme_minimal()  + theme(plot.title = element_markdown(hjust = 0.5),legend.title = element_blank()) + scale_color_manual(values = c("#fdb863","#2d004b"),labels = c("Female", "Male"))
+
+```
+
+We could see that in general, women and younger people seem to suffer more from side effects. As age increased, the report number actually decreased, especially for women. Do elders suffer more from side effects? Not exactly.
+Is it possible there are fewer elders who got vaccinated thus fewer reports? We decided to dive deeper into who got vaccinated by looking at different age groups. 
+
+### Vaccinated rate by different age group
+
+```{r echo=FALSE,dpi= 300,out.width = '70%',out.height = '70%'}
+#vaccinated number by age group from cdc
+agegroup <- read_csv("data/hanyudata/demographic_trends_of_people_receiving_covid19_vaccinations_in_the_united_states.csv")
+agegroup$Date <- as.Date(agegroup$Date, format = "%Y/%m/%d") 
+ageg <- agegroup %>% 
+  filter(Date <= "2021-03-31") %>% #filter for date before 2021/03/31
+  filter(`Age Group` != "Age_unknown" & `Age Group` != "Age_known" & `Age Group` != "Ages_<18yrs") %>%  #filter for age > 18
+  select(Date, `Age Group`, `People with at least one dose`, `Percent of age group with at least one dose`, Census)
+
+ageg$Age <- with(ageg, ifelse(`Age Group` == "Ages_18-29_yrs", "18-29",
+                              ifelse(`Age Group` == "Ages_30-39_yrs", "30-39",
+                                            ifelse(`Age Group` == "Ages_40-49_yrs", "40-49",
+                                                   ifelse(`Age Group` == "Ages_50-64_yrs", "50-64",
+                                                          ifelse(`Age Group` == "Ages_65-74_yrs", "65-74",
+                                                                 ifelse(`Age Group` == "Ages_75+_yrs", "75+", "other")))))))
+
+
+ g <-  ggplot() + geom_line(data = ageg, aes(x = Date, y =`Percent of age group with at least one dose`, color = Age))+ scale_color_brewer(palette = "PuOr") +scale_y_continuous(breaks = seq(0,100,25), limits = c(0,100))+labs(title = "Percentage of People that Have Received at Least One Dose of Cov Vaccine<br>by Age Group", subtitle = "2020/12/16 - 2021/3/31",x="",y = "") +  theme_minimal() + theme(plot.title = element_markdown(hjust=0.5)) + theme(legend.position = "top", legend.title = element_text(size = 8)) +  theme(plot.subtitle=element_text(hjust=0.5))  + scale_y_continuous(labels = c("0" = "0", "25" = "25%", "50" = "50%", "75" = "75%", "100" = "100%")) + guides(colour = guide_legend(nrow = 1)) 
+  #, labels = c("18-29",  "30-39",  "40-49", "50-64",  "65-74", "75+"
+
+library(plotly)
+ggplotly(g) %>% layout(title = paste0("Vaccinated Rate by Different Age Group", "<br>","2020/12/16- 2021/3/31"))
+
+```
+
+By mar 31, 2021, more than 75% of people over 65 had received at least one dose of covid-19 vaccine; a much higher percentage than younger group.
+
+### Report rate by different age group 
+
+```{r echo=FALSE,dpi= 300,out.width = '70%',out.height = '70%'}
+# report num
+yrs <- as %>% 
+  group_by(AGE_YRS) %>% 
+  summarise(sum = sum(n))
+yrs$group <- with(yrs, ifelse(AGE_YRS >= 18 & AGE_YRS <= 29, "Ages_18-29_yrs",
+                              ifelse(AGE_YRS >= 30 & AGE_YRS <= 39, "Ages_30-39_yrs",
+                                            ifelse(AGE_YRS >= 40 & AGE_YRS <= 49, "Ages_40-49_yrs",
+                                                   ifelse(AGE_YRS >= 50 & AGE_YRS <= 64, "Ages_50-64_yrs",
+                                                          ifelse(AGE_YRS >= 65 & AGE_YRS <= 74, "Ages_65-74_yrs",
+                                                                 ifelse(AGE_YRS >= 75, "Ages_75+_yrs", "other")))))))
+# report cases by different age group
+reportbygroup <- yrs %>% 
+  group_by(group) %>% 
+  summarise(reportnumber = sum(sum))
+
+#join vaccinated cases to calculate report rate
+report <- left_join(reportbygroup,ageg, by = c("group" = "Age Group"))
+reportrate <-  report %>% 
+  filter(Date == "2021-03-31") %>% # vaccinated number until 2021/03/31
+  select(group, reportnumber,`People with at least one dose`) %>%
+  mutate(Rate = round(reportnumber*10000 / `People with at least one dose`,2)) #rate
+
+
+ggplot()+
+  geom_col(data = reportrate, aes(x = group, y = Rate, fill = group)) + scale_fill_brewer(palette = "PuOr")+
+  labs(title = "Number of Reported Side Effects Cases per10k Vaccinated People<br> by Mar 31, 2021",x="Age",y = "Number of Reported Cases") + 
+  scale_x_discrete(labels = c("Ages_18-29_yrs" = "18-29", "Ages_30-39_yrs" = "30-39", "Ages_40-49_yrs" = "40-49", "Ages_50-64_yrs" = "50-64", "Ages_65-74_yrs" = "65-74", "Ages_75+_yrs" = "75+")) + 
+  theme_minimal()   +
+  theme(plot.title = element_markdown(hjust = 0.5),legend.position = "none") 
+
+```
+
+By mar31,2021, for people over 75 years old, fewer than 3 of every 10,000 people who received at least one dose of COVID-19, reported adverse effects. In contrast, those aged 30 to 39 reported the highest rate of adverse effects, at 6 out of every 10, 000 people who received the vaccine.
+So, counter-intuitively, it seems that elders are less vulnerable to side effects. Some articles suggest that the immune response may actually be stronger in the younger group, so side effects may be more pronounced for the younger. The results of our data seem to confirm this.
+However, there may be other reasons for the lower rate of reported side effects in the elderly group, such as the elderly group is not as likely to use computers as the younger group, which affects the reporting rate, etc
+
+## Pre-illness
+
+Medical history and Pre-illness are also strong indicators to predict suitable candidates for covid-19 vaccines. So we decided to look at the most common pre-illness of these people who reported adverse reactions.
+
+```{r echo=FALSE,dpi= 300,out.width = '70%',out.height = '70%'}
+his <- vac %>% 
+  filter(AGE_YRS >= 18 & AGE_YRS != 'NA', VAX_DATE >= "2020-12-01" & SEX != "U" ) %>% #filter for age >18 , vaccination data after 2020-12-01 and filter out unknown value for sex
+  filter(HISTORY != "None" & HISTORY != "NA" & HISTORY !="N/A" & HISTORY != "n/a" & HISTORY !="no" & HISTORY != "none") %>% 
+  select(VAERS_ID,HISTORY) %>% 
+  rename(doc_id = VAERS_ID, text = HISTORY) 
+
+#cleaning
+new_stops <- c("no", "history","medical", "conditions", "historyconcurrent", "disease","patient", "relevant","chronic","none", stopwords("en"))
+
+his$text <- iconv(his$text, "UTF-8", "UTF-8",sub='')
+his$text = removePunctuation(his$text)
+his$text=tolower(his$text)
+his$text=removeWords(his$text, new_stops)
+his$text=removeNumbers(his$text)
+  
+require(RWeka)
+# Make tokenizer function 
+tokenizer <- function(x) 
+  NGramTokenizer(x, Weka_control(min = 1, max = 3))
+
+hisd <- data.frame("history" = tokenizer(his$text))
+hisd <- hisd %>% 
+  group_by(history) %>% 
+  count(history) %>% 
+  arrange(desc(n)) 
+#write.csv(hisd, "/Users/hannahz/Desktop/data visualization\\history.csv")
+#after counting, I manually filtered most common 50 pre-illness. I combind the same illness (hypertension, high blood pressure)
+history <- read_csv("data/hanyudata/pre-illness_history_clean.csv")
+
+purple_orange <- brewer.pal(10, "RdYlBu")
+set.seed(2103)
+wordcloud(history$history, history$n, min.freq = 1,
+          scale=c(3,1), max.words = 50, color=purple_orange)
+
+```
+
+Hypertension, asthma, and diabetes are the most common pre-illness mentioned by people reporting side effects. 
+One thought is that respondents with those diseases might be more vulnerable to vaccine side effects. However, Is it possible that those symptoms reported are actually caused by pre-illness but rather than vaccines?  People might associate health problems that would have happened anyway with the vaccines. We haven't come up with a more accurate way to describe this relationship but it is worth exploring.
+
+# When Did Side Effects Kick in ? 
+
+```{r echo=FALSE,dpi= 300,out.width = '70%',out.height = '70%'}
+nums <- vac %>% 
+  filter(AGE_YRS >= 18 & AGE_YRS != 'NA', VAX_DATE >= "2020-12-01" & SEX != "U" & NUMDAYS != "NA") %>%
+  select(SEX,AGE_YRS,NUMDAYS) 
+
+nums$group <- with(nums, ifelse(AGE_YRS >= 18 & AGE_YRS <= 29, "18-29",
+                              ifelse(AGE_YRS >= 30 & AGE_YRS <= 39, "30-39",
+                                            ifelse(AGE_YRS >= 40 & AGE_YRS <= 49, "40-49",
+                                                   ifelse(AGE_YRS >= 50 & AGE_YRS <= 64, "50-64",
+                                                          ifelse(AGE_YRS >= 65 & AGE_YRS <= 74, "65-74",
+                                                                 ifelse(AGE_YRS >= 75, "75+", "other")))))))
+
+numbyages <- nums %>% 
+  group_by(SEX,group) %>% 
+  summarise(mean = mean(NUMDAYS))
+
+
+ggplot(numbyages, aes(x = group, y = mean, fill = SEX)) + geom_col(position = "dodge", width = 0.6) + labs(title = "Side Effects Average Onset Days After Vaccination", x ="Age", y = "Number of Days after Vaccination") +
+  theme_minimal()  + scale_y_continuous(breaks = seq(1,6,1), limits = c(0,6)) + theme(plot.title = element_text(hjust = 0.5), legend.title = element_blank())+scale_fill_manual(values = c("#fdb863","#2d004b"),labels = c("Female", "Male"))
+
+```
+
+In general, the younger group seems to be more sensitive about side effects; they reported symptoms under 3 days after vaccination. Elders tend to be slower in feeling the symptoms.  Side effects tend to kick in early for males in the younger group. In the elder group, on the contrary, females seem to suffer earlier from the symptoms.
+
+# What Are the Symptoms?
+
+## Top 10 common symptoms
+
+```{r echo=FALSE,dpi= 300,out.width = '70%',out.height = '70%'}
+#select symptoms out
+sympword  <-  covid %>% 
+  select(SYMPTOM1, SYMPTOM2, SYMPTOM3, SYMPTOM4, SYMPTOM5)
+# list all the symptoms out in a column
+symd1 <- data.frame(symptom=unlist(sympword, use.names = FALSE))
+#filter out na value
+symd1 <- na.omit(symd1)
+
+common10 <- symd1 %>% 
+  group_by(symptom) %>% 
+  count(symptom) %>%
+  arrange(desc(n)) %>% 
+  ungroup() %>% 
+  mutate(rank = row_number()) %>% 
+  filter(rank <= 10)
+
+ggplot(common10) + geom_col(aes(x = n, y = reorder(symptom, n)), fill ="#fdd49e", width = 0.7) + scale_x_continuous(name = "Number of Symptom Reported", breaks = seq(0,8000,1000)) + labs(title = "Top10 Side Effect Symptoms", y = "")+theme_minimal() + theme_minimal() +  theme(plot.title = element_text(hjust = 0.5))
+
+```
+
+## Emotional words in symptoms description
+
+```{r echo=FALSE,dpi= 300,out.width = '70%',out.height = '70%'}
+senti <- vac %>% 
+  filter(AGE_YRS >= 18 & AGE_YRS != 'NA', VAX_DATE >= "2020-12-01" & SEX != "U") %>%
+  select(VAERS_ID,SYMPTOM_TEXT) %>% 
+  rename(doc_id = VAERS_ID, text = SYMPTOM_TEXT)
+senti$text <- iconv(senti$text, "UTF-8", "UTF-8",sub='')
+
+#convert to a df corpus
+df_source <- DataframeSource(senti)
+df_corpus <- VCorpus(df_source)
+df_corpus
+
+#filter out  neutral words
+new_stops <- c("can", "make", "patient", "vaccine", "received","included","medical","experienced", "outcome", "feeling","receiving", "time", "female", "information", "immunization","shot", "nurse","doctor", "action" ," including","noted","shoulder","physician","visit","reporter", "ethics", "resident",stopwords("en"))
+
+#clean corpus
+clean_corpus <- function(corpus){
+  corpus <- tm_map(corpus, removePunctuation)
+  corpus <- tm_map(corpus, content_transformer(tolower))
+  corpus <- tm_map(corpus, removeWords, c(new_stops))
+  corpus <- tm_map(corpus, removeNumbers)
+  corpus <- tm_map(corpus, stripWhitespace)
+  return(corpus)
+}
+
+cleancor <- clean_corpus(df_corpus)
+
+top_dtm <- DocumentTermMatrix(cleancor)
+
+# convert to tidytext
+top_td <- tidy(top_dtm)
+
+#using NRC 
+# I had some difficulty connecting to the tidytext package and downloading the NRC(probabily because I'm using a vpn) , so I downloaded manually 
+txt <- read.table("data/hanyudata/NRC-Emotion-Lexicon-Wordlevel-v0.92.txt")
+txt <- txt %>% 
+  filter(V3 != 0) %>% 
+  select(V1, V2)
+nrc <- dplyr::rename(txt, word = V1, sentiment = V2)
+
+
+emotion <- top_td %>% 
+  inner_join(nrc, by = c(term = "word")) %>% 
+  group_by(sentiment) %>% 
+  count(term) %>% 
+  arrange(desc(n)) %>% 
+  mutate(rank = row_number()) %>% 
+  mutate(number =  n/1000) %>% 
+  filter(rank <= 10)
+
+    
+  ggplot(data = emotion, aes(reorder(term, number), number, fill=sentiment)) +geom_bar(stat="identity", show.legend = FALSE)  +scale_y_continuous(breaks = seq(0,6,2), labels = c("0" = "0", "2" = "2k", "4" = "4k", "6" = "6k"))+facet_wrap(~sentiment, scales="free_y", ncol=5) +labs(y = "Number of Times Expressed", x = NULL, title = "Emotion Words Expressed in Symptoms Description") +coord_flip()   + scale_fill_brewer(palette = "Paired")  + theme(plot.title = element_text(hjust = 0.5))
+
+```
+
+Negative, disgust, fear, sadness are the most frequently expressed emotions in the symptoms text, which is reasonable because people were experiencing uncomfortable feelings in their bodies.
+
+# Where are the reports from?
+
+## Allocation by state
+
+```{r echo=FALSE,dpi= 300,out.width = '70%',out.height = '70%'}
+# This data set is originated from the allocation data set above, including the vaccine allocation of Pfizer and Moderna in 50 states and the District of Columbia before 2021-03-31.
+# The results of the state elections come from the data provided in the Week 5 lecture.
+# The data cleaning process is completed by Excel.
+
+allocation <- read.csv('data/hldata/clean/allocation_clean.csv')
+
+allocation$allocation <- allocation$allocation/10000
+
+```
+
+```{r echo=FALSE,dpi= 300,out.width = '70%',out.height = '70%'}
+# bar
+p1<-ggplot(allocation, aes(x = state1, y=allocation, 
+                             col = manufacturer , 
+                             fill = manufacturer )) + 
+geom_bar(stat = 'identity')+
+  labs(x = "State", y = "Allocation (10k)", 
+       title = "Vaccine allocation of Pfizer and Moderna - by state")+
+  theme_light()+
+  scale_color_manual(values = c('purple','orange'),
+                     breaks = c('pfizer','moderna'))+
+  scale_fill_manual(values = c('purple','orange'),
+                     breaks = c('pfizer','moderna'))+
+  coord_flip()
+
+
+p1
+```
+
+```{r echo=FALSE,dpi= 300,out.width = '70%',out.height = '70%'}
+#map
+
+us_states <- map_data("state")
+us_states <- us_states %>%
+  dplyr::select(-subregion) %>%
+  dplyr::rename(state = region)
+us_states$state <- str_to_title(us_states$state) # Change the first letter of state to Uppercase
+
+us_states <- us_states %>%
+  filter(state %in% allocation$state1)
+
+alo.g <- left_join(us_states, allocation, by = c('state' = 'state1'))
+
+ggplot(data = alo.g, aes(x = long, y = lat, group = group))+
+  geom_polygon(aes(fill = allocation), color = "black")+
+  scale_fill_distiller(type = "seq", palette = "Oranges",
+                     breaks = seq(0, 700, by = 100),
+                     limits = c(0, 700),
+                     direction = "horizontal")+
+  facet_grid(manufacturer ~ .)+
+  theme_map()+
+  theme(legend.position = "top")
+
+```
+
+The number of vaccine allocations in each state does not have a brand tendency.
+In every state, the number of vaccine allocations for the two brands is basically the same.
+
+### Report rate by state & 2020 election result
+
+```{r echo=FALSE,dpi= 300,out.width = '70%',out.height = '70%'}
+# This data set is originated from the VAERS data set and the daily vaccinations data set above, including the number of people vaccinated (before 2021-03-31) and the number of side effect case reported (from 2020-12-14 to 2021-03-31) in 50 states and the District of Columbia. 
+# The results of the state elections come from the data provided in the Week 5 lecture.
+# The data cleaning process is completed by Excel.
+
+case_vac <- read.csv('data/hldata/clean/case_vac_clean.csv')
+
+# rate represents the proportion of side effects cases per 100,000 people who have been vaccinated
+case_vac <- case_vac %>% 
+  mutate(rate = 100000*case/vaccinations)
+```
+
+```{r echo=FALSE,dpi= 300,out.width = '70%',out.height = '70%'}
+# bar
+p2<-ggplot(case_vac, aes(x = state1, y=rate, 
+                             col = party , 
+                             fill = party )) + 
+geom_bar(stat = 'identity')+
+  labs(x = "State", y = "Side effect rate (per 100k vaccinated)", 
+       title = "Side effect rate - by state")+
+  theme_light()+
+  scale_color_manual(values = c('Blue','Red'),
+                     breaks = c('DEMOCRAT','REPUBLICAN'))+
+  scale_fill_manual(values = c('Blue','Red'),
+                     breaks = c('DEMOCRAT','REPUBLICAN'))+
+  coord_flip()
+
+p2
+```
+
+```{r message=FALSE, warning=FALSE}
+states.sp <- readOGR(dsn = "data/hldata/cb_2018_us_state_5m/cb_2018_us_state_5m.shp")
+# shape file source: https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+```
+
+```{r}
+# leaflet
+#merge  to the shapefile
+rate.sp <- states.sp
+rate.sp@data<-rate.sp@data %>%
+  left_join(case_vac, by = c('NAME' = 'state1'))
+
+sub.d<-subset(rate.sp, party == 'DEMOCRAT' )
+sub.r<-subset(rate.sp, party == 'REPUBLICAN' )
+
+#pop up content
+rate.popup.content <- paste("State:",rate.sp@data$NAME ,"<br/>",
+                 "Report rate:",round(rate.sp@data$rate,2),"per 100k vaccined" ,"<br/>",
+                 "Party:",rate.sp@data$party ,"<br/>")
+
+rate.popup.content.d <- paste("State:",sub.d@data$NAME ,"<br/>",
+                 "Report rate:",round(sub.d@data$rate,2),"per 100k vaccined" ,"<br/>",
+                 "Party:",sub.d@data$party ,"<br/>")
+
+rate.popup.content.r <- paste("State:",sub.r@data$NAME ,"<br/>",
+                 "Report rate:",round(sub.r@data$rate,2),"per 100k vaccined" ,"<br/>",
+                 "Party:",sub.r@data$party ,"<br/>")
+
+#
+leaflet() %>%
+addProviderTiles("OpenStreetMap.Mapnik") %>%
+setView(lat = 37, lng = -95, zoom = 4) %>%
+  addPolygons(group="rate",
+            data =rate.sp,
+            stroke = TRUE,
+            smoothFactor = 0.5,
+            weight=1,
+            color = '#333333',
+            opacity=1,
+            fillColor = ~colorQuantile("Oranges", rate)(rate), 
+            fillOpacity = 1,
+            popup = rate.popup.content) %>%
+  
+  
+  addPolygons(group="Democrat",
+             data=subset(rate.sp, party == 'DEMOCRAT' ),
+             popup = rate.popup.content.d,
+             opacity = 1.0, stroke = TRUE,
+             color = "blue", weight=1) %>%
+  
+  
+  addPolygons(group="Republican",
+             data=subset(rate.sp, party == 'REPUBLICAN' ),
+             popup = rate.popup.content.r,
+             opacity = 1.0, stroke = TRUE,
+             color = "red", weight=1) %>%
+  
+  addLayersControl(overlayGroups = c("rate","Democrat","Republican"),
+                   options = layersControlOptions(collapsed = FALSE))
+```
+
+The reporting rate of vaccine side effects in each state does not seem to be significantly related to the party's victory in the 2020 election. But New York has the highest reporting rate, more than double that of Montana, the second highest.
+
+## Cases by manufacturer
+
+```{r echo=FALSE,dpi= 300,out.width = '70%',out.height = '70%'}
+# This data set is originated from the VAERS data set above, including the number of side effect case reported (from 2020-12-14 to 2021-03-31) by manufacturer in 50 states and the District of Columbia. 
+# The results of the state elections come from the data provided in the Week 5 lecture.
+# The data cleaning process is completed by Excel.
+
+case_manu <- read.csv('data/hldata/clean/case_manu_clean.csv')
+```
+
+```{r echo=FALSE,dpi= 300,out.width = '70%',out.height = '70%'}
+# bar
+
+p3<-ggplot(case_manu, aes(x = state1, y=case_manu, 
+                             col = manu , 
+                             fill = manu )) + 
+geom_bar(stat = "identity", position = position_dodge())+
+  labs(x = "State", y = "Cases", 
+       title = "Side effect cases reported of Pfizer and Moderna - by state")+
+  theme_light()+
+  
+  scale_color_manual(values = c('purple','orange'),
+                     breaks = c('pfizer','moderna'))+
+  scale_fill_manual(values = c('purple','orange'),
+                     breaks = c('pfizer','moderna'))+
+
+    coord_flip()
+
+p3
+
+```
+
+```{r}
+# leaflet
+
+#merge  to the shapefile
+cm.sp.p <- states.sp
+cm.sp.p@data<-cm.sp.p@data %>%
+  left_join(subset(case_manu, manu == "pfizer"), by = c('NAME' = 'state1'))
+
+cm.sp.m <- states.sp
+cm.sp.m@data<-cm.sp.m@data %>%
+  left_join(subset(case_manu, manu == "moderna"), by = c('NAME' = 'state1'))
+
+
+#pop up content
+cm.p.popup.content <- paste("State:",cm.sp.p@data$NAME ,"<br/>",
+                 "Report case:",cm.sp.p@data$case_manu ,"<br/>",
+                 "Manufacturer:",cm.sp.p@data$manu ,"<br/>",
+                 "Party:",cm.sp.p@data$party ,"<br/>")
+
+cm.m.popup.content <- paste("State:",cm.sp.m@data$NAME ,"<br/>",
+                 "Report case:",cm.sp.m@data$case_manu ,"<br/>",
+                 "Manufacturer:",cm.sp.m@data$manu ,"<br/>",
+                 "Party:",cm.sp.m@data$party ,"<br/>")
+
+
+#
+
+leaflet() %>%
+addProviderTiles("OpenStreetMap.Mapnik") %>%
+setView(lat = 37, lng = -95, zoom = 4) %>%
+  
+  addPolygons(group="pfizer",
+            data =cm.sp.p,
+            stroke = TRUE,
+            smoothFactor = 0.5,
+            weight=1,
+            color = '#333333',
+            opacity=1,
+            fillColor = ~colorQuantile("Purples", case_manu)(case_manu), 
+            fillOpacity = 0.5,
+            popup = cm.p.popup.content) %>%
+  
+  addPolygons(group="moderna",
+            data =cm.sp.m,
+            stroke = TRUE,
+            smoothFactor = 0.5,
+            weight=1,
+            color = '#333333',
+            opacity=1,
+            fillColor = ~colorQuantile("Oranges", case_manu)(case_manu), 
+            fillOpacity = 0.5,
+            popup = cm.m.popup.content) %>%
+
+  
+  addLayersControl(overlayGroups = c("pfizer","moderna"),
+                   options = layersControlOptions(collapsed = FALSE))
+
+
+```
+
+According to previous visulizations, there is no significant difference in the number of vaccine allocations between Moderna and Pfizer in each state. However, Pfizer’s vaccine has more reported cases of side effects.
